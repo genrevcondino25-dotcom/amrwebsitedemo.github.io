@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A.M Rieta Corporation</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" type="image/png" href="assets/img/amr-official-logo-1.png">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+        <style>
+            body{
+            font-family:'Inter',sans-serif;
+            scroll-behavior:smooth;
+            background:#fafafa;
+            }
+            .hero-gradient{
+            background: radial-gradient(circle at top,#e9f9ef,transparent 60%);
+            }
+            .glow{
+            box-shadow:0 10px 40px rgba(1,158,61,.25);
+            }
+            .glow:hover{
+            box-shadow:0 20px 60px rgba(1,158,61,.45);
+            }
+            .card-hover{
+            transition:all .4s ease;
+            }
+            .card-hover:hover{
+            transform:translateY(-12px) scale(1.02);
+            box-shadow:0 30px 70px rgba(0,0,0,.12);
+            }
+            .floating{
+            animation:float 6s ease-in-out infinite;
+            }
+            @keyframes float{
+            0%{transform:translateY(0)}
+            50%{transform:translateY(-20px)}
+            100%{transform:translateY(0)}
+            }
+            .blur-circle{
+            position:absolute;
+            width:400px;
+            height:400px;
+            background:#019e3d;
+            opacity:.08;
+            filter:blur(120px);
+            border-radius:50%;
+            }
+            #product-slider::-webkit-scrollbar{
+            display:none;
+            }
+            #product-slider{
+            scrollbar-width:none;
+            }
+            /* 3D card effect */
+            .product-card{
+            transition: transform .2s ease, box-shadow .3s ease;
+            transform-style: preserve-3d;
+            }
+            .product-img{
+            transition: transform .5s ease;
+            }
+            /* magnetic hover */
+            .product-card:hover{
+            box-shadow:0 30px 70px rgba(0,0,0,.15);
+            }
+
+            .product-card:hover .product-img{
+transform:scale(1.08);
+}
+        </style>
+    </head>
+    <body class="antialiased bg-green-50">
+        <!-- NAVBAR -->
+        <header class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-center justify-between h-20">
+                    <!-- LOGO -->
+                    <img src="assets/img/amr-official-logo-1.png" class="h-10">
+                    <!-- DESKTOP MENU -->
+                    <nav class="hidden md:flex gap-10 text-sm font-medium text-gray-700">
+                        <a href="#about" class="nav-link hover:text-[#019e3d] transition">About</a>
+                        <a href="#products" class="nav-link hover:text-[#019e3d] transition">Products</a>
+                        <a href="#contact" class="nav-link hover:text-[#019e3d] transition">Contact</a>
+                    </nav>
+                    <!-- DESKTOP BUTTON -->
+                    <button class="hidden md:block bg-[#019e3d] px-6 py-2 text-white rounded-full glow transition">
+                    Contact
+                    </button>
+                    <!-- MOBILE HAMBURGER -->
+                    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5">
+                    <span class="w-6 h-[2px] bg-gray-800"></span>
+                    <span class="w-6 h-[2px] bg-gray-800"></span>
+                    <span class="w-6 h-[2px] bg-gray-800"></span>
+                    </button>
+                </div>
+                <!-- MOBILE MENU -->
+                <div id="mobile-menu" class="hidden md:hidden pb-6">
+                    <nav class="flex flex-col gap-4 text-sm font-medium text-gray-700 mt-4">
+                        <a href="#about" class="nav-link hover:text-[#019e3d]">About</a>
+                        <a href="#products" class="nav-link hover:text-[#019e3d]">Products</a>
+                        <a href="#contact" class="nav-link hover:text-[#019e3d]">Contact</a>
+                        <button class="bg-[#019e3d] px-6 py-2 text-white rounded-full glow mt-2">
+                        Contact
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- END NAVBAR -->
+        <!-- HERO -->
+        <section class="pt-36 pb-28 hero-gradient relative overflow-hidden">
+            <div class="blur-circle top-0 left-0"></div>
+            <div class="blur-circle bottom-0 right-0"></div>
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center">
+                <div data-aos="fade-up">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                        Beauty crafted with  
+                        <span class="text-[#019e3d]">science & care</span>
+                    </h1>
+                    <p class="text-gray-600 mb-8 text-lg max-w-xl">
+                        We develop premium personal care products combining
+                        innovation, research, and world-class manufacturing.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-[#019e3d] text-white px-7 py-3 rounded-lg glow hover:scale-105 transition">
+                        Explore Products
+                        </button>
+                        <button class="border border-gray-300 px-7 py-3 rounded-lg hover:bg-gray-100 transition">
+                        Learn More
+                        </button>
+                    </div>
+                </div>
+                <img src="assets/img/hero-image.jpg" class="rounded-3xl shadow-2xl floating w-full max-w-lg mx-auto">
+            </div>
+        </section>
+        <!-- END OF HERO -->
+        <!-- ABOUT -->
+        <section id="about" class="py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <img src="assets/img/about-us-images.png"
+                    class="rounded-3xl shadow-xl"
+                    data-aos="fade-right">
+                <div data-aos="fade-left">
+                    <p class="uppercase text-sm tracking-widest text-[#019e3d] mb-3">
+                        About Us
+                    </p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        24 Years of Trusted  
+                        <span class="text-[#019e3d]">Partnership</span>
+                    </h2>
+                    <p class="text-gray-600 mb-8">
+                        A.M. Rieta Corporation partners with leading brands in
+                        the personal care industry. Our mission is delivering
+                        high-quality products backed by ISO GMP standards.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-xl text-center shadow">
+                            <h3 class="text-3xl font-bold text-[#019e3d]">24+</h3>
+                            <p class="text-gray-500 text-sm">Years</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl text-center shadow">
+                            <h3 class="text-3xl font-bold text-[#019e3d]">ISO</h3>
+                            <p class="text-gray-500 text-sm">GMP 22716</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl text-center shadow">
+                            <h3 class="text-3xl font-bold text-[#019e3d]">100+</h3>
+                            <p class="text-gray-500 text-sm">Products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END OF ABOUT -->
+        <!-- SERVICES -->
+        <section class="py-28 bg-green-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-4">
+                        Full Service <span class="text-[#019e3d]">Development</span>
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        We support brands from idea to finished product.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-10 rounded-2xl border border-gray-100
+                        hover:-translate-y-3 hover:shadow-2xl transition duration-500 group"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-6">🧪</div>
+                        <h3 class="text-lg font-semibold mb-3">Formula Research</h3>
+                        <p class="text-gray-600 text-sm">
+                            Custom formulation development tailored to your brand's specific needs and market demands.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-gray-100
+                        hover:-translate-y-3 hover:shadow-2xl transition duration-500 group"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-6">📦</div>
+                        <h3 class="text-lg font-semibold mb-3">Packaging Selection</h3>
+                        <p class="text-gray-600 text-sm">
+                            Expert guidance on packaging solutions that protect your product and elevate your brand.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-gray-100
+                        hover:-translate-y-3 hover:shadow-2xl transition duration-500 group"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-6">🎨</div>
+                        <h3 class="text-lg font-semibold mb-3">Product Design</h3>
+                        <p class="text-gray-600 text-sm">
+                            Complete finished product design from concept to shelf-ready presentation.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-gray-100
+                        hover:-translate-y-3 hover:shadow-2xl transition duration-500 group"
+                        data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-6">🔬</div>
+                        <h3 class="text-lg font-semibold mb-3">Quality Control</h3>
+                        <p class="text-gray-600 text-sm">
+                            Rigorous testing and quality assurance following ISO GMP 22716 standards.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-gray-100
+                        hover:-translate-y-3 hover:shadow-2xl transition duration-500 group"
+                        data-aos="fade-up" data-aos-delay="500">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-6">⚙️</div>
+                        <h3 class="text-lg font-semibold mb-3">Manufacturing</h3>
+                        <p class="text-gray-600 text-sm">
+                            State-of-the-art equipment and skilled workforce for consistent production quality.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-2xl border border-gray-100
+                        hover:-translate-y-3 hover:shadow-2xl transition duration-500 group"
+                        data-aos="fade-up" data-aos-delay="600">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-6">🛡️</div>
+                        <h3 class="text-lg font-semibold mb-3">Compliance</h3>
+                        <p class="text-gray-600 text-sm">
+                            Full regulatory compliance and documentation for personal care products.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END OF SERVICES -->
+        <!-- PRODUCTS -->
+        <section id="products" class="py-28 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold">
+                        Our <span class="text-[#019e3d]">Products</span>
+                    </h2>
+                    <p class="text-gray-600 mt-4">
+                        Premium skincare solutions crafted for results.
+                    </p>
+                </div>
+                <div class="relative group" data-aos="fade-up" data-aos-delay="150">
+                    <!-- LEFT FADE -->
+                    <div class="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <!-- RIGHT FADE -->
+                    <div class="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+                    <!-- ARROWS -->
+                    <button id="prev"
+                        class="opacity-0 group-hover:opacity-100 transition absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg w-10 h-10 rounded-full flex items-center justify-center">
+                    ‹
+                    </button>
+                    <button id="next"
+                        class="opacity-0 group-hover:opacity-100 transition absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg w-10 h-10 rounded-full flex items-center justify-center">
+                    ›
+                    </button>
+                    <!-- SLIDER -->
+                    <div id="product-slider"
+                        class="flex gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 cursor-grab">
+                        <!-- CARD -->
+                         <div class="product-card min-w-[280px] max-w-[280px] snap-start bg-white p-6 rounded-2xl shadow card-hover"
+     data-aos="fade-up" data-aos-delay="100">
+                            <img src="assets/img/products/product-1.jpg" class="product-img h-44 w-full object-cover rounded-xl mb-4" alt="Body Ritual Recipes">
+                            <h3 class="font-semibold">Body Ritual Recipes</h3>
+                            <p class="text-gray-600 text-sm mt-2">
+                                Deep hydration for glowing skin.
+                            </p>
+                        </div>
+                        <div class="product-card min-w-[280px] max-w-[280px] snap-start bg-white p-6 rounded-2xl shadow card-hover"
+     data-aos="fade-up" data-aos-delay="100">
+                            <img src="assets/img/products/product-2.jpg" class="product-img h-44 w-full object-cover rounded-xl mb-4" alt="Belo Baby Hand Sanitizer">
+                            <h3 class="font-semibold">Belo Baby Hand Sanitizer</h3>
+                            <p class="text-gray-600 text-sm mt-2">
+                                Deep hydration for glowing skin.
+                            </p>
+                        </div>
+                        <div class="product-card min-w-[280px] max-w-[280px] snap-start bg-white p-6 rounded-2xl shadow card-hover"
+     data-aos="fade-up" data-aos-delay="100">
+                            <img src="assets/img/products/product-3.jpg" class="product-img h-44 w-full object-cover rounded-xl mb-4" alt="Moroccan Argan Oil">
+                            <h3 class="font-semibold">Moroccan Argan Oil</h3>
+                            <p class="text-gray-600 text-sm mt-2">
+                                Brightens and restores skin tone.
+                            </p>
+                        </div>
+                        <div class="product-card min-w-[280px] max-w-[280px] snap-start bg-white p-6 rounded-2xl shadow card-hover"
+     data-aos="fade-up" data-aos-delay="100">
+                            <img src="assets/img/products/product-4.jpg" class="product-img h-44 w-full object-cover rounded-xl mb-4" alt="Kojic Acid Soap">
+                            <h3 class="font-semibold">Kojic Acid Soap</h3>
+                            <p class="text-gray-600 text-sm mt-2">
+                                Overnight nourishment for skin repair.
+                            </p>
+                        </div>
+                        <div class="product-card min-w-[280px] max-w-[280px] snap-start bg-white p-6 rounded-2xl shadow card-hover"
+     data-aos="fade-up" data-aos-delay="100">
+                            <img src="assets/img/products/product-5.jpg" class="product-img h-44 w-full object-cover rounded-xl mb-4" alt="Belo Men Whitening Bar">
+                            <h3 class="font-semibold">Belo Men Whitening Bar</h3>
+                            <p class="text-gray-600 text-sm mt-2">
+                                Improves elasticity and firmness.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END OF PRODUCTS -->
+        <!-- CONTACT -->
+        <section id="contact" class="py-28 bg-green-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-16" data-aos="fade-up">
+                    Get In <span class="text-[#019e3d]">Touch</span>
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- LEFT SIDE - CONTACT INFO -->
+                    <div class="space-y-8" data-aos="fade-right">
+                        <!-- MAP -->
+                        <div class="rounded-2xl overflow-hidden shadow-lg">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.21309222673!2d120.89756071083579!3d14.4148760815382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d2b1a96c769b%3A0xaecdf80c346d8dc0!2sA.M.%20Rieta%20Corporation!5e0!3m2!1sen!2sph!4v1773026751351!5m2!1sen!2sph"
+                                class="w-full h-64 border-0"
+                                allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <!-- CONTACT DETAILS -->
+                        <div class="bg-white p-8 rounded-2xl shadow-lg space-y-6">
+                            <!-- ADDRESS -->
+                            <div class="flex items-start gap-4">
+                                <div class="text-[#019e3d] text-xl">📍</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">Address</h3>
+                                    <p class="text-gray-600">
+                                        Kalayaan Road, Advincula Ave.<br>
+                                        San Sebastian, Kawit, Cavite
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- PHONE -->
+                            <div class="flex items-start gap-4">
+                                <div class="text-[#019e3d] text-xl">📞</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">Phone</h3>
+                                    <p class="text-gray-600">(046)454-3640 / 09209202788</p>
+                                </div>
+                            </div>
+                            <!-- EMAIL -->
+                            <div class="flex items-start gap-4">
+                                <div class="text-[#019e3d] text-xl">✉️</div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">Email</h3>
+                                    <p class="text-gray-600">amrietachemical@yahoo.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RIGHT SIDE - CONTACT FORM -->
+                    <div data-aos="fade-left">
+<form id ="contact-form" class="space-y-6 bg-white p-6 sm:p-10 rounded-3xl shadow-xl">
+
+<div>
+<label class="block text-sm font-medium mb-2">Full Name</label>
+<input 
+type="text"
+name="name"
+required
+class="border border-gray-300 focus:ring-2 focus:ring-[#019e3d] p-4 rounded-xl w-full outline-none"
+placeholder="Your Name">
+</div>
+
+<div>
+<label class="block text-sm font-medium mb-2">Email</label>
+<input 
+type="email"
+name="email"
+required
+class="border border-gray-300 focus:ring-2 focus:ring-[#019e3d] p-4 rounded-xl w-full outline-none"
+placeholder="Your Email">
+</div>
+
+<div>
+<label class="block text-sm font-medium mb-2">Subject</label>
+<input 
+type="text"
+name="subject"
+required
+class="border border-gray-300 focus:ring-2 focus:ring-[#019e3d] p-4 rounded-xl w-full outline-none"
+placeholder="Your Subject">
+</div>
+
+<div>
+<label class="block text-sm font-medium mb-2">Message</label>
+<textarea 
+name="message"
+rows="5"
+required
+class="border border-gray-300 focus:ring-2 focus:ring-[#019e3d] p-4 rounded-xl w-full outline-none"
+placeholder="Your Message"></textarea>
+</div>
+
+<button 
+type="submit"
+class="bg-[#019e3d] hover:bg-green-700 transition text-white px-6 py-4 rounded-xl w-full font-semibold">
+Send Message
+</button>
+
+</form>
+</div>
+                </div>
+            </div>
+        </section>
+        <!-- END OF CONTACT -->
+        <!-- FOOTER -->
+        <footer class="bg-white text-black py-16">
+
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+
+<div>
+<img src="assets/img/amr-official-logo-1.png" class="h-10 mb-4">
+<p class="text-black-400 text-sm">
+Premium personal care manufacturing for global brands.
+</p>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4">Company</h4>
+<ul class="space-y-2 text-black-400 text-sm">
+<li>About</li>
+<li>Products</li>
+<li>Services</li>
+<li>Contact</li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4">Contact</h4>
+<p class="text-black-400 text-sm">
+Kalayaan Road, Advincula Ave.  
+Kawit, Cavite
+</p>
+</div>
+
+<div>
+<h4 class="font-semibold mb-4">Follow Us</h4>
+<p class="text-black-400 text-sm">
+Facebook  
+LinkedIn  
+Instagram
+</p>
+</div>
+
+</div>
+
+<div class="text-center text-black-500 text-sm mt-12">
+© 2026 A.M Rieta Corporation
+</div>
+
+</footer>
+<!-- STICKY CTA -->
+
+<a href="#contact"
+class="fixed bottom-6 right-6 bg-[#019e3d] text-white px-6 py-3 rounded-full shadow-xl hover:scale-110 transition">
+Contact
+</a>
+        <!-- END FOOTER -->
+        <!-- COOKIE CONSENT -->
+        <div id="cookie-consent"
+            class="fixed bottom-0 left-0 right-0 p-6 transform translate-y-full transition duration-700 ease-out z-50">
+            <div class="max-w-6xl mx-auto">
+                <div class="backdrop-blur-xl bg-white/80 border border-gray-200 shadow-2xl rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6">
+                    <!-- TEXT -->
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-1">
+                            We respect your privacy
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            This website uses cookies to enhance your browsing experience,
+                            analyze traffic, and comply with the
+                            <a href="/privacy-policy.html" class="text-[#019e3d] font-medium underline">
+                            Data Privacy Act of 2012 (RA 10173)
+                            </a>.
+                        </p>
+                    </div>
+                    <!-- BUTTONS -->
+                    <div class="flex gap-3 w-full md:w-auto">
+                        <button onclick="declineCookies()"
+                            class="px-5 py-2.5 rounded-xl border border-gray-300 hover:bg-gray-100 transition w-full md:w-auto">
+                        Decline
+                        </button>
+                        <button onclick="acceptCookies()"
+                            class="px-5 py-2.5 rounded-xl bg-[#019e3d] text-white hover:scale-105 transition shadow-lg w-full md:w-auto">
+                        Accept All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script>
+            AOS.init({
+                duration:900,
+                once:true,
+                easing:"ease-out-cubic"
+                })
+            
+            function acceptCookies(){
+             localStorage.setItem("cookieConsent", "accepted");
+             document.getElementById("cookie-consent").style.display = "none";
+            }
+            
+            function declineCookies(){
+             localStorage.setItem("cookieConsent", "declined");
+             document.getElementById("cookie-consent").style.display = "none";
+            }
+            
+            window.onload = function(){
+             if(!localStorage.getItem("cookieConsent")){
+                 document.getElementById("cookie-consent").style.display = "block";
+             }
+            }
+            
+            // MOBILE MENU TOGGLE
+            const menuBtn = document.getElementById("menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            
+            menuBtn.addEventListener("click", () => {
+               mobileMenu.classList.toggle("hidden");
+            });
+            
+            
+            // NAV LINK CLICK
+            document.querySelectorAll('.nav-link').forEach(link => {
+            
+            link.addEventListener('click', function(e) {
+               e.preventDefault();
+            
+               const targetId = this.getAttribute('href');
+               const target = document.querySelector(targetId);
+            
+               window.scrollTo({
+                  top: target.offsetTop - 80,
+                  behavior: 'smooth'
+               });
+            
+               // ✅ CLOSE MOBILE MENU AFTER CLICK
+               mobileMenu.classList.add("hidden");
+            
+            });
+            });
+            const slider = document.getElementById("product-slider");
+            const prev = document.getElementById("prev");
+            const next = document.getElementById("next");
+            
+            // DUPLICATE CARDS FOR INFINITE LOOP
+            const cards = [...slider.children];
+            cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            slider.appendChild(clone);
+            });
+            
+            // ARROW BUTTONS
+            next.addEventListener("click", () => {
+            slider.scrollBy({ left: 320, behavior: "smooth" });
+            });
+            
+            prev.addEventListener("click", () => {
+            slider.scrollBy({ left: -320, behavior: "smooth" });
+            });
+            
+            
+            // AUTO SCROLL
+            let autoScroll = setInterval(() => {
+            slider.scrollLeft += 1;
+            
+            // RESET POSITION FOR INFINITE LOOP
+            if (slider.scrollLeft >= slider.scrollWidth / 2) {
+            slider.scrollLeft = 0;
+            }
+            
+            }, 20);
+            
+            
+            // PAUSE ON HOVER
+            slider.addEventListener("mouseenter", () => clearInterval(autoScroll));
+            
+            slider.addEventListener("mouseleave", () => {
+            autoScroll = setInterval(() => {
+            slider.scrollLeft += 1;
+            
+            if (slider.scrollLeft >= slider.scrollWidth / 2) {
+            slider.scrollLeft = 0;
+            }
+            
+            }, 20);
+            });
+            
+            
+            // DRAG SCROLL
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            
+            slider.addEventListener("mousedown", (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            });
+            
+            slider.addEventListener("mouseleave", () => isDown = false);
+            slider.addEventListener("mouseup", () => isDown = false);
+            
+            slider.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            
+            slider.scrollLeft = scrollLeft - walk;
+            });
+
+            (function(){
+emailjs.init("4nZg7soiM3iuLqQMg");
+})();
+
+document.getElementById("contact-form")
+.addEventListener("submit", function(event) {
+
+event.preventDefault();
+
+emailjs.sendForm(
+"service_gbycl79",
+"template_23chk2d",
+this
+).then(
+function() {
+alert("Message sent successfully!");
+},
+function(error) {
+alert("Failed to send message.");
+console.log(error);
+}
+);
+
+});
+        </script>
+
+
+    </body>
+</html>
